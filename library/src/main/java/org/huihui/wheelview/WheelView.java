@@ -14,11 +14,8 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Scroller;
 
 import org.huihui.wheelview.adapter.BaseWheelViewAdapter;
-
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/6/16.
@@ -34,7 +31,6 @@ public class WheelView extends View {
     private Paint mOtherPaint;
     private float textPadding;
     private PointF centerPoint;
-    private List<String> mStrings;
     //最初的空白高度
     private int spaceHeight;
     private StaticLayout mStaticLayout;
@@ -50,7 +46,6 @@ public class WheelView extends View {
     private int curentIndex;
 
     private int mVisibleItem;
-    private Scroller mScroller;
     private SimpleOnGestureListener mListener;
     private GestureDetector mGestureDetector;
     private float lastFlingDistance;
@@ -298,16 +293,6 @@ public class WheelView extends View {
         if (!isFirstLoad) {
             moveDistance = getItemHeight() * position;
             startY = centerPoint.y - moveDistance;
-            invalidate();
-        }
-    }
-
-    public void setData(List<String> strings) {
-        if (strings == null || strings.isEmpty()) {
-            return;
-        }
-        mStrings = strings;
-        if (isFirstLoad) {
             invalidate();
         }
     }
