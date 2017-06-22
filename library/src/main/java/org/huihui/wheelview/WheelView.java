@@ -201,7 +201,7 @@ public class WheelView extends View {
             return;
         }
         super.onDraw(canvas);
-        canvas.drawLine(0, centerPoint.y, getMeasuredWidth(), centerPoint.y, mOtherPaint);
+//        canvas.drawLine(0, centerPoint.y, getMeasuredWidth(), centerPoint.y, mOtherPaint);
         float traslateY = 0;
 
         if (moveDistance > (mBaseWheelViewAdapter.size() - 1) * (getItemHeight())) {
