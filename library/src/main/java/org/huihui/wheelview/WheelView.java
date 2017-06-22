@@ -9,7 +9,6 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.text.StaticLayout;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
@@ -106,7 +105,6 @@ public class WheelView extends View {
                     float animatedValue = (float) animation.getAnimatedValue();
                     float dy = animatedValue - lastFlingDistance;
                     lastFlingDistance = animatedValue;
-                    Log.e("dy", "onAnimationUpdate: " + dy);
                     moveDistance -= dy;
                     startY = centerPoint.y - moveDistance;
                     invalidate();
@@ -209,12 +207,10 @@ public class WheelView extends View {
         if (moveDistance > (mBaseWheelViewAdapter.size() - 1) * (getItemHeight())) {
             startY = centerPoint.y - (mBaseWheelViewAdapter.size() - 1) * (getItemHeight());
             moveDistance = (mBaseWheelViewAdapter.size() - 1) * (getItemHeight());
-            Log.e("index", "已经超过");
         }
         if (startY < centerPoint.y - mVisibleItem * (getItemHeight())) {
             startY = centerPoint.y - Math.abs(moveDistance % (getItemHeight()))
                     - mVisibleItem * (getItemHeight());
-            Log.e("index", "startY:" + startY);
         }
         if (moveDistance <= 0) {
             moveDistance = 0;
@@ -234,7 +230,6 @@ public class WheelView extends View {
         }
 
         int index = startIndex;
-        Log.e("index", "开始:" + index);
         while (index <= endIndex) {
             canvas.save();
             canvas.translate(0, traslateY);
@@ -249,7 +244,6 @@ public class WheelView extends View {
             traslateY += getItemHeight();
             index++;
         }
-        Log.e("index", "结束:" + index);
     }
 
     @Override
@@ -268,7 +262,6 @@ public class WheelView extends View {
     }
 
     private void adjust() {
-        Log.e(TAG, "adjust: ");
         lastAdjustDistance = 0;
         float decimal = moveDistance % (getItemHeight());
         int integer = (int) (moveDistance / (getItemHeight()));
@@ -339,7 +332,6 @@ public class WheelView extends View {
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            Log.e(TAG, "onScroll: " + distanceY);
             moveDistance += distanceY;
             startY = centerPoint.y - moveDistance;
             invalidate();
@@ -348,7 +340,6 @@ public class WheelView extends View {
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            Log.e(TAG, "onFling: " + velocityY);
             float abs = Math.abs(velocityY);
             int during;
             float distance;
@@ -362,8 +353,7 @@ public class WheelView extends View {
                 during = 500;
             }
             float offset = moveDistance % (getItemHeight());
-            Log.e(TAG, "onFling: " + velocityY + "moveDistance:" + moveDistance + " distance:" + distance
-                    + " offset:" + offset);
+
             if (velocityY < 0) {
                 //往上滑动:需要减去多余的距离
                 distance -= offset;

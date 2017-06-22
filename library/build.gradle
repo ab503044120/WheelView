@@ -31,16 +31,16 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 //项目主页
-def siteUrl = 'https://github.com/ab503044120/EazyZxing'    // project homepage
+def siteUrl = 'https://github.com/ab503044120/WheelView'    // project homepage
 //项目的版本控制地址
-def gitUrl = 'https://github.com/ab503044120/EazyZxing.git' // project git
+def gitUrl = 'https://github.com/ab503044120/WheelView.git' // project git
 
 //发布到组织名称名字，必须填写
 group = "org.huihui"
 //发布到JCenter上的项目名字，必须填写
-def libName = "EazyZxing"
+def libName = "WheelView"
 // 版本号，下次更新是只需要更改版本号即可
-version = "1.1.0"
+version = "1.0.0"
 /**  上面配置后上传至jcenter后的编译路径是这样的：  **/
 
 //生成源文件
@@ -56,7 +56,7 @@ task javadoc(type: Javadoc) {
     options.charSet 'UTF-8'
     options.author true
     options.version true
-    options.links "https://github.com/linglongxin24/FastDev/tree/master/mylibrary/docs/javadoc"
+//    options.links "https://github.com/linglongxin24/FastDev/tree/master/mylibrary/docs/javadoc"
     failOnError false
 }
 
@@ -119,7 +119,7 @@ bintray {
     pkg {
         repo = "maven"
         name = libName    //发布到JCenter上的项目名字，必须填写
-        desc = 'This is zxinglib'    //项目描述
+        desc = 'This is WheelView'    //项目描述
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
