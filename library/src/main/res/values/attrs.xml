@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WheelView">
+        <attr name="wheelview_selecttextsize" format="dimension"/>
+        <attr name="wheelview_textColorOther" format="color"/>
+        <attr name="wheelview_textColorCenter" format="color"/>
+        <attr name="wheelview_InterlineSpaceTimes" format="dimension"/>
+    </declare-styleable>
+</resources>
